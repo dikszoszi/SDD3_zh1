@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>CovidTesting.Program</StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CovidTesting.DB\CovidTesting.DB.csproj" />
+    <ProjectReference Include="..\CovidTesting.UTILS\CovidTesting.UTILS.csproj" />
+  </ItemGroup>
+
+</Project>
