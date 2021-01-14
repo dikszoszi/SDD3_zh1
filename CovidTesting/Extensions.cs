@@ -2,16 +2,10 @@
 
 namespace CovidTesting
 {
-    public static class MyExtensions
+    public static class Extensions
     {
         public static void ToConsole<T>(this System.Collections.Generic.IEnumerable<T> input, string str)
         {
-            if (input is null)
-            {
-                Console.WriteLine("Nothing to print!");
-                return;
-            }
-
             Console.WriteLine("*** BEGIN " + str);
             foreach (T item in input)
             {
