@@ -29,7 +29,7 @@ namespace CovidTesting.DB
         public string Position { get; set; }
 
         [NotMapped]
-        public virtual ICollection<CovidTest> Tests { get; set; }
+        public virtual ICollection<CovidTest> Tests { get; }
 
         public Player()
         {

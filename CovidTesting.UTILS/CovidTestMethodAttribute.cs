@@ -3,7 +3,7 @@
 namespace CovidTesting.UTILS
 {
     [AttributeUsage(AttributeTargets.Method)]
-    public class CovidTestMethodAttribute : Attribute
+    public sealed class CovidTestMethodAttribute : Attribute
     {
     }
 }

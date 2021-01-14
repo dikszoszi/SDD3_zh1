@@ -5,9 +5,10 @@ using System.Reflection;
 
 namespace CovidTesting.UTILS
 {
-    public class TestExecutor
+    public static class TestExecutor
     {
-        static Random rnd = new Random();
+        private static readonly Random rnd = new Random();
+
         private static MethodInfo PickRandomMethod(object covidTester)
         {
             MethodInfo[] methods = covidTester.GetType().GetMethods()
@@ -22,6 +23,8 @@ namespace CovidTesting.UTILS
         }
         public static Dictionary<int, bool> ExecuteTests(object covidTester, IEnumerable<object> people)
         {
+            if (covidTester is null) throw new ArgumentNullException(nameof(covidTester), " NULL input param!");
+            if (people is null) throw new ArgumentNullException(nameof(people), " NULL input param!");
             var output = new Dictionary<int, bool>();
             foreach (object person in people)
             {

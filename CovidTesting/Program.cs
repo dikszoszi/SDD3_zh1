@@ -3,6 +3,7 @@ using CovidTesting.UTILS;
 using System;
 using System.Linq;
 
+[assembly: System.CLSCompliant(false)]
 namespace CovidTesting
 {
 
@@ -31,8 +32,8 @@ namespace CovidTesting
                     CovidTest test = new CovidTest
                     {
                         Date = DateTime.Now.Date.AddDays(i * 5),
+                        PlayerId = item.Key,
                         IsPositive = item.Value,
-                        PlayerId = item.Key
                     };
                     ctx.CovidTests.Add(test);
                 }
@@ -77,11 +78,12 @@ namespace CovidTesting
             q3a.ToConsole("Q3 alt.");
         }
 
-        static void Main(string[] args)
+        private static void Main()
         {
             PlayerContext ctx = new PlayerContext();
             FillDatabase(ctx);
             QueryDatabase(ctx);
+            ctx.Dispose();
         }
     }
 }
