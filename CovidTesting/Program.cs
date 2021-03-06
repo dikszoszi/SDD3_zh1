@@ -6,30 +6,29 @@ using System.Linq;
 [assembly: System.CLSCompliant(false)]
 namespace CovidTesting
 {
-
-    class Program
+    internal class Program
     {
         static void FillDatabase(PlayerContext ctx)
         {
-            TeamGenerator team = new TeamGenerator();
+            TeamGenerator team = new ();
             var teamXml = team.GetTeam(10);
             Console.WriteLine(teamXml);
             Console.ReadLine();
 
             foreach (var node in teamXml.Descendants("player"))
             {
-                Player player = new Player(node);
+                Player player = new (node);
                 ctx.Players.Add(player);
             }
             ctx.SaveChanges();
 
-            CovidTester tester = new CovidTester();
+            CovidTester tester = new ();
             for (int i = 0; i < 10; i++)
             {
                 var results = TestExecutor.ExecuteTests(tester, ctx.Players);
                 foreach (var item in results)
                 {
-                    CovidTest test = new CovidTest
+                    CovidTest test = new ()
                     {
                         Date = DateTime.Now.Date.AddDays(i * 5),
                         PlayerId = item.Key,
@@ -80,7 +79,7 @@ namespace CovidTesting
 
         private static void Main()
         {
-            PlayerContext ctx = new PlayerContext();
+            PlayerContext ctx = new ();
             FillDatabase(ctx);
             QueryDatabase(ctx);
             ctx.Dispose();

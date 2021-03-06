@@ -7,7 +7,7 @@ namespace CovidTesting.UTILS
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1052:Static holder types should be Static or NotInheritable", Justification = "This needs to be non-static.")]
     public class CovidTester
     {
-        private static readonly Random rnd = new Random();
+        private static readonly Random rnd = new ();
 
         [CovidTestMethod]
         public static bool PcrTester(string input)

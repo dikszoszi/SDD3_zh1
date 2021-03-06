@@ -7,7 +7,7 @@ namespace CovidTesting.UTILS
 {
     public static class TestExecutor
     {
-        private static readonly Random rnd = new Random();
+        private static readonly Random rnd = new ();
 
         private static MethodInfo PickRandomMethod(object covidTester)
         {
